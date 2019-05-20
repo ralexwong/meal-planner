@@ -1,0 +1,265 @@
+
+a {
+    color:white;
+}
+
+#user-name, #add-user {
+    margin-left: 45%;
+}
+
+#current-user {
+    margin-left: 40%;
+    margin-top: 10px;
+}
+
+#add-user {
+    margin-top: 10px;
+}
+
+#jumbotron {
+    background: rgb(94, 218, 187);
+    color: white;
+}
+
+.display-4 {
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size:120px;
+}
+
+#Search-food {
+    margin-left: 50px;
+}
+
+li {
+    font-size:23px;
+    font-family: 'Istok Web', sans-serif;
+
+}
+
+.foodName {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#breakfast-button, #lunch-button, #dinner-button, #stats {
+    margin-bottom: 20px;
+}
+
+
+
+img {
+    height: 100px;
+    width: 150px;
+    margin-left: 15px;
+    padding: 10px;
+}
+
+.dropdown-menu {
+    width: 1020px !important;
+    height: 375px !important;
+}
+
+.dropdown-menu-right {
+    margin-left: 300px;
+}
+
+#content {
+    background: rgb(94, 218, 187);
+    color: #f1f1f1;
+    height:60%;
+    width: 100%;
+}
+
+.card {
+    margin-left: 18px;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    font-size: 14px;
+}
+
+#calculate {
+    float: right;
+    margin-right: 0;
+    margin-left: 10%;
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+#clear {
+    float: right;
+    margin-right: 0;
+    margin-left: 10%;
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+#save {
+    float: right;
+    margin-right: 0;
+    margin-left: 5%;
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+#menuPlannerTitle {
+    border-bottom: 1px black solid;
+}
+
+h1 {
+    text-align: center;
+}
+
+#user-card {
+    width: 178px;
+}
+
+#user {
+    margin-left: 40%;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+#login-button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#calendar {
+    margin: auto;
+}
+
+.day {
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+#sunday {
+    background-color: rgb(248, 190, 190);
+}
+
+#monday {
+    background-color: #6ab4ff;
+}
+
+#tuesday {
+    background-color: rgb(255, 184, 30)
+}
+
+#wednesday {
+    background-color: rgb(227, 110, 250);
+}
+
+#thursday {
+    background-color: rgb(196, 250, 219);
+}
+
+#friday {
+    background-color: rgb(188, 217, 247);
+}
+
+#saturday {
+    background-color: rgb(250, 171, 171);
+}
+
+.foodBox {
+    background-color: white;
+    border-radius: 5px;
+    height:150px;
+    margin: 5px;
+    width:226px;
+}
+
+.droparea:-moz-drag-over {
+    border: 3px solid black;
+  }
+
+#weeklyMenuTitle {
+    border-bottom: 2px solid black;
+}
+
+.dayText {
+    font-family: 'Istok Web', sans-serif;
+    font-size: 28px;
+    position: relative;
+    text-align: center;
+    top:30%;
+}
+
+.category {
+    font-size: 20px;
+    font-weight:bold;
+    margin:0 100px 0 10px;
+    position:relative;
+    left:25%;
+}
+
+#breakfast {
+    margin-left:0;
+}
+
+#lunch {
+    margin-left:5px;
+}
+
+#stats {
+    margin-left: 30px;
+}
+
+.statsBox {
+    left: 3%;
+    line-height: 2.3;
+    position: relative;
+}
+
+#weeklyMenuText {
+    font-size: 35px;
+}
+
+#searchresultsdiv {
+    margin: 0 auto 0 auto;
+}
+
+
+
+@media (max-width: 426px) {
+
+    .display-4 {
+        font-size: 40px;
+    }
+
+    li {
+        font-size: 15px;
+    }
+
+    .foodBox {
+    height: 100px;
+    width: 68px;
+
+    }
+    
+    .dayText {
+        font-size: 15px;
+    }
+
+    .category {
+        font-size: 10px;
+        margin:0;
+        left:0;
+    }
+
+    #breakfast-button, #lunch-button, #dinner-button, #stats {
+        margin: 0 0 10px 0;
+    } 
+
+    .statsBox { 
+        font-size: 11px;
+    }
+}

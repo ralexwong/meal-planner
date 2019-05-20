@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Prep Time!</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- CSS file linked -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+
+    <!-- Google Font link -->
+    <link href="https://fonts.googleapis.com/css?family=Istok+Web|Pathway+Gothic+One|Shadows+Into+Light+Two"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron" id="jumbotron">
+            <h1 class="display-4">How to use the planner</h1>
+            <hr class="my-4">
+            <ul>
+                <li>Tap on the breakfast/lunch/dinner buttons to checkout some pre assorted meals! Click and drag one of
+                    the meals into a box.</li>
+                <br>
+                <li>You can also search for specific food with our search button!</li>
+                <br>
+                <li>The planner will calculate the nutritional info of your daily meal when box has a food item in it.
+                </li>
+            </ul>
+            <button type="button" class="btn btn-success btn-color"> 
+                <a href="recipe.html">Click here for recipes!</a>
+            </button>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1" id="user-name">User Name</label>
+                    <input class="form-control" id="login" type="text">
+                    <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+                    <br>
+                    <label for="exampleInputEmail1" id="current-user"></label>
+                </div>  
+            </form>
+
+          
+        </div>
+    </div>
+    <div id="searchContainer" style="display: none">
+        <div class="row" style="margin: 0 auto 0 15%">
+            <div id="search-food-card-0" class="card" style="width: 13rem;" draggable="true">
+                <p id="search0"></p>
+                <img id="search-card-img-0" draggable="false"
+                    src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+            </div>
+            <div id="search-food-card-1" class="card" style="width: 13rem;" draggable="true">
+                <p id="search1"></p>
+                <img id="search-card-img-1" draggable="false"
+                    src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+            </div>
+            <div id="search-food-card-2" class="card" style="width: 13rem;" draggable="true">
+                <p id="search2"></p>
+                <img id="search-card-img-2" draggable="false"
+                    src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+            </div>
+            <div id="search-food-card-3" class="card" style="width: 13rem;" draggable="true">
+                <p id="search3"></p>
+                <img id="search-card-img-3" draggable="false"
+                    src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+            </div>
+            <div id="search-food-card-4" class="card" style="width: 13rem;" draggable="true">
+                <p id="search4"></p>
+                <img id="search-card-img-4" draggable="false"
+                    src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto 0 15%">
+            <div id="search-food-card-5" class="card" style="width: 13rem;" draggable="true">
+                <p id="search5"></p>
+                <img id="search-card-img-5" draggable="false"
+                    src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+            </div>
+            <div id="search-food-card-6" class="card" style="width: 13rem;" draggable="true">
+                <p id="search6"></p>
+                <img id="search-card-img-6" draggable="false"
+                    src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+            </div>
+            <div id="search-food-card-7" class="card" style="width: 13rem;" draggable="true">
+                <p id="search7"></p>
+                <img id="search-card-img-7" draggable="false"
+                    src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+            </div>
+            <div id="search-food-card-8" class="card" style="width: 13rem;" draggable="true">
+                <p id="search8"></p>
+                <img id="search-card-img-8" draggable="false"
+                    src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+            </div>
+            <div id="search-food-card-9" class="card" style="width: 13rem;" draggable="true">
+                <p id="search9"></p>
+                <img id="search-card-img-9" draggable="false"
+                    src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="calendar">
+        <div class="row" id="weeklyMenuTitle">
+            <div class="column">
+                <p id="weeklyMenuText">Weekly Menu Planner!</p>
+            </div>
+
+            <form id="Search-food">
+                <input style="border-color: black" type="text" id="searchAPI" placeholder="Enter your search here">
+                <input id="submitbutton" style="margin: 5px; border-color: black" type="submit">
+            </form>
+
+            <button type="button" class="btn btn-success btn-color" id="save"> Save! </button>
+            <button type="button" class="btn btn-success btn-color" id="clear"> Clear all! </button>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-2">
+
+            </div>
+            <div class="column btn-group dropup">
+
+                <button type="button" class="category btn btn-info dropdown-toggle breakfastbutton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    id="breakfast-button">BREAKFAST</button>
+
+                <div class="dropdown-menu dropdown-menu-right" id="breakfast-menu">
+
+                    <div class="row">
+                        <div id="breakfast-food-card-1" class="card" style="width: 11rem;" draggable="true">
+                            <p id="break1"></p>
+                            <img id="break-card-img-1" draggable="false"
+                                src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png">
+                        </div>
+
+                        <div id="breakfast-food-card-2" class="card" style="width: 11rem;" draggable="true">
+                            <p id="break2"></p>
+                            <img id="break-card-img-2" draggable="false"
+                                src="https://oipps.co.uk/skin/frontend/invopak/default/images/placeholder/221x190.png"
+                                alt="">
+                        </div>
+
+                        <div id="breakfast-food-card-3" class="card" style="width: 11rem;" draggable="true">
+                            <p id="break3"></p>
+                            <img id="break-card-img-3" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="breakfast-food-card-4" class="card" style="Width: 11rem;" draggable="true">
+                            <p id="break4"></p>
+                            <img id="break-card-img-4" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="breakfast-food-card-5" class="card" style="width: 11rem;" draggable="true">
+                            <p id="break5"></p>
+                            <img id="break-card-img-5" draggable="false" src="" alt="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div id="breakfast-food-card-6" class="card" style="width: 11rem;" draggable="true">
+                            <p id="break6"></p>
+                            <img id="break-card-img-6" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="breakfast-food-card-7" class="card" style="width: 11rem;" draggable="true">
+                            <p id="break7"></p>
+                            <img id="break-card-img-7" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="breakfast-food-card-8" class="card" style="width: 11rem;" draggable="true">
+                            <p id="break8"></p>
+                            <img id="break-card-img-8" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="breakfast-food-card-9" class="card" style="width: 11rem;" draggable="true">
+                            <p id="break9"></p>
+                            <img id="break-card-img-9" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="breakfast-food-card-0" class="card" style="width: 11rem;" draggable="true">
+                            <p id="break0"></p>
+                            <img id="break-card-img-0" draggable="false" src="" alt="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="column btn-group dropup">
+
+                <button type="button" class="category btn btn-info dropdown-toggle lunchbutton btn-color"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="lunch-button">LUNCH</button>
+
+                <div class="dropdown-menu dropdown-menu-right" id="lunch-menu">
+
+                    <div class="row">
+                        <div id="lunch-food-card-1" class="card" style="width: 11rem;" draggable="true">
+                            <p id="lunch1"></p>
+                            <img id="lunch-card-img-1" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="lunch-food-card-2" class="card" style="width: 11rem;" draggable="true">
+                            <p id="lunch2"></p>
+                            <img id="lunch-card-img-2" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="lunch-food-card-3" class="card" style="width: 11rem;" draggable="true">
+                            <p id="lunch3"></p>
+                            <img id="lunch-card-img-3" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="lunch-food-card-4" class="card" style="width: 11rem;" draggable="true">
+                            <p id="lunch4"></p>
+                            <img id="lunch-card-img-4" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="lunch-food-card-5" class="card" style="width: 11rem;" draggable="true">
+                            <p id="lunch5"></p>
+                            <img id="lunch-card-img-5" draggable="false" src="" alt="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div id="lunch-food-card-6" class="card" style="width: 11rem;" draggable="true">
+                            <p id="lunch6"></p>
+                            <img id="lunch-card-img-6" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="lunch-food-card-7" class="card" style="width: 11rem;" draggable="true">
+                            <p id="lunch7"></p>
+                            <img id="lunch-card-img-7" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="lunch-food-card-8" class="card" style="width: 11rem;" draggable="true">
+                            <p id="lunch8"></p>
+                            <img id="lunch-card-img-8" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="lunch-food-card-9" class="card" style="width: 11rem;" draggable="true">
+                            <p id="lunch9"></p>
+                            <img id="lunch-card-img-9" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="lunch-food-card-0" class="card" style="width: 11rem;" draggable="true">
+                            <p id="lunch0"></p>
+                            <img id="lunch-card-img-0" draggable="false" src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column btn-group dropup">
+
+                <button type="button" class="category btn btn-info dropdown-toggle dinnerbutton btn-color"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dinner-button">DINNER</button>
+
+                <div class="dropdown-menu dropdown-menu-right" id="dinner-menu">
+
+                    <div class="row">
+
+                        <div id="dinner-food-card-1" class="card" style="width: 11rem;" draggable="true">
+                            <p id="dinner1"></p>
+                            <img id="dinner-card-img-1" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="dinner-food-card-2" class="card" style="width: 11rem;" draggable="true">
+                            <p id="dinner2"></p>
+                            <img id="dinner-card-img-2" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="dinner-food-card-3" class="card" style="width: 11rem;" draggable="true">
+                            <p id="dinner3"></p>
+                            <img id="dinner-card-img-3" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="dinner-food-card-4" class="card" style="width: 11rem;" draggable="true">
+                            <p id="dinner4"></p>
+                            <img id="dinner-card-img-4" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="dinner-food-card-5" class="card" style="width: 11rem;" draggable="true">
+                            <p id="dinner5"></p>
+                            <img id="dinner-card-img-5" draggable="false" src="" alt="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div id="dinner-food-card-6" class="card" style="width: 11rem;" draggable="true">
+                            <p id="dinner6"></p>
+                            <img id="dinner-card-img-6" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="dinner-food-card-7" class="card" style="width: 11rem;" draggable="true">
+                            <p id="dinner7"></p>
+                            <img id="dinner-card-img-7" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="dinner-food-card-8" class="card" style="width: 11rem;" draggable="true">
+                            <p id="dinner8"></p>
+                            <img id="dinner-card-img-8" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="dinner-food-card-9" class="card" style="width: 11rem;" draggable="true">
+                            <p id="dinner9"></p>
+                            <img id="dinner-card-img-9" draggable="false" src="" alt="">
+                        </div>
+
+                        <div id="dinner-food-card-0" class="card" style="width: 11rem;" draggable="true">
+                            <p id="dinner0"></p>
+                            <img id="dinner-card-img-0" draggable="false" src="" alt="">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="column">
+                <button class="category btn btn-info btn-color" id="stats">Calculate</button>
+            </div>
+
+        </div>
+
+
+        <div class="row day" id="sunday">
+            <div class="col-2">
+                <p class="dayText">SUN</p>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="sunday-breakfast"> </div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="sunday-lunch"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="sunday-dinner"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox">
+                    <div class="statsBox" id="sunday-stats">
+                        <p2>Calories: <span></span>
+                            <br>
+                            Protein:<span></span>
+                            <br>
+                            Carbs: <span></span>
+                            <br>
+                            Fats: <span></span>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row day" id="monday">
+            <div class="col-2">
+                <p class="dayText">MON</p>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="monday-breakfast"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="monday-lunch"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="monday-dinner"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox">
+                    <div class="statsBox" id="monday-stats">
+                        <p2>Calories: <span></span>
+                            <br>
+                            Protein:<span></span>
+                            <br>
+                            Carbs: <span></span>
+                            <br>
+                            Fats: <span></span>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row day" id="tuesday">
+            <div class="col-2">
+                <p class="dayText">TUES</p>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="tuesday-breakfast"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="tuesday-lunch"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="tuesday-dinner"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox">
+                    <div class="statsBox" id="tuesday-stats">
+                        <p2>Calories: <span></span>
+                            <br>
+                            Protein:<span></span>
+                            <br>
+                            Carbs: <span></span>
+                            <br>
+                            Fats: <span></span>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row day" id="wednesday">
+            <div class="col-2">
+                <p class="dayText">WED</p>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="wednesday-breakfast"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="wednesday-lunch"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="wednesday-dinner"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox">
+                    <div class="statsBox" id="wednesday-stats">
+                        <p2>Calories: <span></span>
+                            <br>
+                            Protein:<span></span>
+                            <br>
+                            Carbs: <span></span>
+                            <br>
+                            Fats: <span></span>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row day" id="thursday">
+            <div class="col-2">
+                <p class="dayText">THUR</p>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="thursday-breakfast"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="thursday-lunch"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="thursday-dinner"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox">
+                    <div class="statsBox" id="thursday-stats">
+                        <p2>Calories: <span></span>
+                            <br>
+                            Protein:<span></span>
+                            <br>
+                            Carbs: <span></span>
+                            <br>
+                            Fats: <span></span>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row day" id="friday">
+            <div class="col-2">
+                <p class="dayText">FRI</p>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="friday-breakfast"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="friday-lunch"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="friday-dinner"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox">
+                    <div class="statsBox" id="friday-stats">
+                        <p2>Calories: <span></span>
+                            <br>
+                            Protein:<span></span>
+                            <br>
+                            Carbs: <span></span>
+                            <br>
+                            Fats: <span></span>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row day" id="saturday">
+            <div class="col-2">
+                <p class="dayText">SAT</p>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="saturday-breakfast"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="saturday-lunch"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox droptarget" id="saturday-dinner"></div>
+            </div>
+            <div class="column">
+                <div class="foodBox">
+                    <div class="statsBox" id="saturday-stats">
+                        <p2>Calories: <span></span>
+                            <br>
+                            Protein:<span></span>
+                            <br>
+                            Carbs: <span></span>
+                            <br>
+                            Fats: <span></span>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- Javascript link-->
+    <script src="assets/javascript/app.js"></script>
+
+</body>
+
+
+
+
+
+<!-- Jquery link-->
+<!-- <script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+
+</html>

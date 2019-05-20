@@ -1,0 +1,141 @@
+body, html {
+    height:100%;
+    width:100%;
+}
+
+.row {
+    height:100%;
+}
+
+#introImage {
+    background-image: url("../images/intro2.jpg");
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    object-fit: contain;
+}
+
+#titlePage {
+    background: rgb(94, 218, 187);
+    height:100%;
+    width:100%;
+}
+
+#mealPrep {
+    border-bottom: 20px solid rgb(61, 209, 172);
+    color:white;
+    display: flex;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 150px;
+    justify-content: center;
+    max-height: 200px;
+    max-width: 570px;
+    margin: 0 auto 0 auto;
+}
+
+#getStarted {
+    border: 5px solid white;
+    color:white;
+    display: flex;
+    font-size:50px;
+    justify-content: center;
+    margin:50px auto 0 auto;
+    /* width: 600px; */
+    /* bottom:5%; */
+    /* left: 10%;
+    position: absolute; */
+}
+
+#getStartedDiv {
+    bottom:5%;
+    left: 10%;
+    position: absolute;
+    width:600px;
+}
+
+#moreInfo {
+    bottom:40%;
+    color:white;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size:25px;
+    left:60%;
+    position: absolute;
+}
+
+#explaining {
+    color:white;
+    display: flex;
+    font-family: 'Istok Web', sans-serif;
+    font-size:25px;
+    font-weight: 600;
+    height:268px;
+    justify-content: center;
+    margin:50px auto 0 auto;
+    max-width: 600px;
+
+}
+
+
+
+/* Media Queries */
+@media (max-width: 992px) {
+
+    #mealPrep{
+        font-size: 100px;
+    }
+
+    #explaining {
+        font-size: 25px;
+    }
+
+    #moreInfo {
+        font-size:18px;
+    }
+
+    #getStarted {
+        font-size:30px;
+        /* width:400px; */
+    }
+
+}
+  
+@media (max-width: 768px) {
+  
+
+
+}
+  
+@media (max-width: 640px) {
+  
+
+  
+}
+
+@media (max-width: 426px) {
+
+    #titlePage {
+        flex: none;
+        max-width: none;
+        padding: 0 20px 0 20px;
+    }
+
+    #explaining {
+        font-size: 25px;
+    }
+
+    #moreInfo {
+        font-size:18px;
+        left: 40%;
+        bottom: 30%;
+    }
+
+    #getStarted {
+        font-size: 20px;
+    }
+
+    #getStartedDiv {
+        width: 300px;
+        left:13%;
+    }
+
+}
+  
