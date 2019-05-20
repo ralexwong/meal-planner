@@ -448,7 +448,12 @@ $(document).ready(function () {
 
                 console.log(snapshot.val());
 
+                for (var i = 0; i < daysArray.length; i++) {
 
+                    for (var j = 0; j < mealArray.length; j++) {
+                        $("#" + daysArray[i] + "-" + j).html(snapshot.val().daysArray[i] + mealArray[j])
+                    }
+                }
         
                 $("#sunday-breakfast").html(snapshot.val().sundayBreakfast);
                 $("#sunday-lunch").html(snapshot.val().sundayLunch);
@@ -559,9 +564,8 @@ $(document).ready(function () {
     $(document).on("click", "#submitbutton", function () {
         var apiID = "aee51471";
         var apiKey = "b4a9d4d9acaf471f9a836e6615157895";
-        var input = document.getElementById("searchAPI").value;
-        var userinput = input;
-        var queryURL = `https://api.edamam.com/search?q=${userinput}&app_id=${apiID}&app_key=${apiKey}`
+        var q = document.getElementById("searchAPI").value;
+        var queryURL = `https://api.edamam.com/search?q=${q}&app_id=${apiID}&app_key=${apiKey}`
 
         $("#searchContainer").show();
 
@@ -594,7 +598,8 @@ $(document).ready(function () {
 
 
     //On click of x button, call api for images and nutrient information
-    $(document).on("click", "#breakfast-button", function () {
+    $(document).on("click", ".mealButton", function () {
+        console.log($(this).text().toLowerCase());
 
         // For breakfast, hide lunch/dinner. For lunch, hide breakfast/dinner. etc..
 
@@ -602,8 +607,7 @@ $(document).ready(function () {
         // ajax call
         var apiID = "9f84eb9a";
         var apiKey = "87c7dc23bc1d85a4af08d0fed3b5eb4e";
-        var q = "breakfast";
-        // var q = on.click on breakfast lunch or dinner dropdown?
+        var q = $(this).text().toLowerCase();
         var queryURL = `https://api.edamam.com/search?q=${q}&app_id=${apiID}&app_key=${apiKey}`
 
         $.ajax({
@@ -614,63 +618,32 @@ $(document).ready(function () {
 
                 for (var i = 0; i < response.hits.length; i++) {
 
-                    $("#break-card-img-" + i).append(response.hits[i].recipe.image);
-                    $("#break-card-img-" + i).attr("src", response.hits[i].recipe.image);
-                    $("#breakfast-food-card-" + i).attr({
+                    $("#" + q + "-card-img-" + i).append(response.hits[i].recipe.image);
+                    $("#" + q + "-card-img-" + i).attr("src", response.hits[i].recipe.image);
+                    $("#" + q + "-food-card-" + i).attr({
                         "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
                         "protein": response.hits[i].recipe.digest[2].total / response.hits[i].recipe.yield,
                         "fats": response.hits[i].recipe.digest[0].total / response.hits[i].recipe.yield,
                         "carbohydrates": response.hits[i].recipe.digest[1].total / response.hits[i].recipe.yield,
                     })
-                    $("#break" + i).prepend(response.hits[i].recipe.label);
+                    $("#" + q + i).prepend(response.hits[i].recipe.label);
                 }
 
                 console.log(response);
             });
     });
 
-
-    $(document).on("click", "#lunch-button", function () {
-
-        // ajax call
-        var apiID = "9f84eb9a";
-        var apiKey = "87c7dc23bc1d85a4af08d0fed3b5eb4e";
-        var q = "lunch";
-        // var q = on.click on breakfast lunch or dinner dropdown?
-        var queryURL = `https://api.edamam.com/search?q=${q}&app_id=${apiID}&app_key=${apiKey}`
-
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-            .then(function (response) {
-
-                for (var i = 0; i < response.hits.length; i++) {
-
-                    $("#lunch-card-img-" + i).append(response.hits[i].recipe.image);
-                    $("#lunch-card-img-" + i).attr("src", response.hits[i].recipe.image);
-                    $("#lunch-food-card-" + i).attr({
-                        "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
-                        "protein": response.hits[i].recipe.digest[2].total / response.hits[i].recipe.yield,
-                        "fats": response.hits[i].recipe.digest[0].total / response.hits[i].recipe.yield,
-                        "carbohydrates": response.hits[i].recipe.digest[1].total / response.hits[i].recipe.yield,
-                    })
-                    $("#lunch" + i).prepend(response.hits[i].recipe.label);
-                }
-
-                console.log(response);
-
-            });
-    });
-
-
+    //On click of x button, call api for images and nutrient information
     $(document).on("click", "#dinner-button", function () {
+        console.log($(this).text().toLowerCase());
+
+        // For breakfast, hide lunch/dinner. For lunch, hide breakfast/dinner. etc..
+
 
         // ajax call
         var apiID = "9f84eb9a";
         var apiKey = "87c7dc23bc1d85a4af08d0fed3b5eb4e";
-        var q = "dinner";
-        // var q = on.click on breakfast lunch or dinner dropdown?
+        var q = $(this).text().toLowerCase();
         var queryURL = `https://api.edamam.com/search?q=${q}&app_id=${apiID}&app_key=${apiKey}`
 
         $.ajax({
@@ -679,22 +652,22 @@ $(document).ready(function () {
         })
             .then(function (response) {
 
-
                 for (var i = 0; i < response.hits.length; i++) {
 
-                    $("#dinner-card-img-" + i).append(response.hits[i].recipe.image);
-                    $("#dinner-card-img-" + i).attr("src", response.hits[i].recipe.image);
-                    $("#dinner-food-card-" + i).attr({
+
+
+                    $("#" + q + "-card-img-" + i).append(response.hits[i].recipe.image);
+                    $("#" + q + "-card-img-" + i).attr("src", response.hits[i].recipe.image);
+                    $("#" + q + "-food-card-" + i).attr({
                         "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
                         "protein": response.hits[i].recipe.digest[2].total / response.hits[i].recipe.yield,
                         "fats": response.hits[i].recipe.digest[0].total / response.hits[i].recipe.yield,
                         "carbohydrates": response.hits[i].recipe.digest[1].total / response.hits[i].recipe.yield,
                     })
-                    $("#dinner" + i).prepend(response.hits[i].recipe.label);
+                    $("#" + q + i).prepend(response.hits[i].recipe.label);
                 }
 
                 console.log(response);
-
             });
     });
 
