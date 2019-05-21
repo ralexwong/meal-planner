@@ -4,6 +4,7 @@ $(document).ready(function () {
     var daysArray = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     var mealArray = ["breakfast", "lunch", "dinner"];
     var nutrientArray = ["calories", "protein", "carbohydrates", "fats",];
+    var shortDayArray = ["SUN", "MON", "TUES", "WED", "THUR", "FRI", "SAT"]
 
     // Hide the meal menus at the beginning
     $("#breakfast-menu").hide();
@@ -99,26 +100,57 @@ $(document).ready(function () {
     })
 
 
-
+    // calcualtes the nutrients from the foodboxes
     function calculate() {
 
-        // Calculate Sunday Calories / Nutrients 
 
+        // loop through the days array
         for (var i = 0; i < daysArray.length; i++) {
 
+            // make sure to empty it the first time
             $("#" + daysArray[i] + "-stats").empty();
 
+            // loop through the nutrient array
             for (var k = 0; k < nutrientArray.length; k++) {
 
+                // add together the nutrient from all the meals of that day and round it to a number
                 var count = Math.round((+$("#" + daysArray[i] + "-breakfast").children().attr(nutrientArray[k])) + (+$("#" + daysArray[i] + "-lunch").children().attr(nutrientArray[k])) + (+$("#" + daysArray[i] + "-dinner").children().attr(nutrientArray[k])));
 
+                // append numbers to html
                 $("#" + daysArray[i] + "-stats").append(nutrientArray[k] + ": " + count + "<br>");
-
-                console.log(count);
 
             }
         }
     }
+
+    //     var sundayBreakfastCalories = $("#sunday-breakfast").children().attr("calories");
+    //     var sundayLunchCalories = $("#sunday-lunch").children().attr("calories");
+    //     var sundayDinnerCalories = $("#sunday-dinner").children().attr("calories");
+
+    //     var sundayCalories = Math.round((+sundayBreakfastCalories) + (+sundayLunchCalories) + (+sundayDinnerCalories));
+
+    //     var sundayBreakfastProtein = $("#sunday-breakfast").children().attr("protein");
+    //     var sundayLunchProtein = $("#sunday-lunch").children().attr("protein");
+    //     var sundayDinnerProtein = $("#sunday-dinner").children().attr("protein");
+
+    //     var sundayProtein = Math.round((+sundayBreakfastProtein) + (+sundayLunchProtein) + (+sundayDinnerProtein));
+
+    //     var sundayBreakfastCarbs = $("#sunday-breakfast").children().attr("carbohydrates");
+    //     var sundayLunchCarbs = $("#sunday-lunch").children().attr("carbohydrates");
+    //     var sundayDinnerCarbs = $("#sunday-dinner").children().attr("carbohydrates");
+
+    //     var sundayCarbs = Math.round((+sundayBreakfastCarbs) + (+sundayLunchCarbs) + (+sundayDinnerCarbs));
+
+    //     var sundayBreakfastFats = $("#sunday-breakfast").children().attr("fats");
+    //     var sundayLunchFats = $("#sunday-lunch").children().attr("fats");
+    //     var sundayDinnerFats = $("#sunday-dinner").children().attr("fats");
+
+    //     var sundayFats = Math.round((+sundayBreakfastFats) + (+sundayLunchFats) + (+sundayDinnerFats));
+
+    //     $("#sunday-stats").empty().append("Calories: " + sundayCalories + "<br>");
+    //     $("#sunday-stats").append("Protein: " + sundayProtein + "g" + "<br>");
+    //     $("#sunday-stats").append("Carbs: " + sundayCarbs + "g" + "<br>");
+    //     $("#sunday-stats").append("Fats: " + sundayFats + "g" + "<br>");
 
     function firebaseMeals() {
 
@@ -322,18 +354,49 @@ $(document).ready(function () {
             .then(function (response) {
                 //For loop for appending images and title of user search
                 console.log(response);
-                for (var i = 0; i < response.hits.length; i++) {
+                var rowDiv = $("<div class='row' style='margin: 0 auto 0 auto'>");
+                for (var i = 0; i < 5; i++) {
 
-                    $("#search-card-img-" + i).attr("src", response.hits[i].recipe.image);
-                    $("#search" + i).text(response.hits[i].recipe.label);
-                    $("#search-food-card-" + i).attr({
+                    var foodDiv = $("<div class='card searchCard' style='width: 11rem;' draggable='true'>");
+                    var pDiv = $("<p>" + response.hits[i].recipe.label + "</p>");
+                    var imgDiv = $("<img class='mealCards' draggable='false'>");
+
+                    $(foodDiv).append(pDiv);
+                    $(foodDiv).append(imgDiv);
+                    $(imgDiv).attr("src", response.hits[i].recipe.image);
+
+                    $(foodDiv).attr({
                         "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
                         "protein": response.hits[i].recipe.digest[2].total / response.hits[i].recipe.yield,
                         "fats": response.hits[i].recipe.digest[0].total / response.hits[i].recipe.yield,
                         "carbohydrates": response.hits[i].recipe.digest[1].total / response.hits[i].recipe.yield,
-                    });
-                };
+                    })
 
+                    $(rowDiv).append(foodDiv);
+                }
+                $("#searchContainer").append(rowDiv);
+
+                var rowDiv2 = $("<div class='row' style='margin: 0 auto 0 auto'>");
+                for (var i = 5; i < 10; i++) {
+
+                    var foodDiv = $("<div class='card searchCard' style='width: 11rem;' draggable='true'>");
+                    var pDiv = $("<p>" + response.hits[i].recipe.label + "</p>");
+                    var imgDiv = $("<img class='mealCards' draggable='false'>");
+
+                    $(foodDiv).append(pDiv);
+                    $(foodDiv).append(imgDiv);
+                    $(imgDiv).attr("src", response.hits[i].recipe.image);
+
+                    $(foodDiv).attr({
+                        "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
+                        "protein": response.hits[i].recipe.digest[2].total / response.hits[i].recipe.yield,
+                        "fats": response.hits[i].recipe.digest[0].total / response.hits[i].recipe.yield,
+                        "carbohydrates": response.hits[i].recipe.digest[1].total / response.hits[i].recipe.yield,
+                    })
+
+                    $(rowDiv2).append(foodDiv);
+                }
+                $("#searchContainer").append(rowDiv2);
 
             });
 
