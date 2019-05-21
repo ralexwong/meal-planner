@@ -594,9 +594,6 @@ $(document).ready(function () {
     });
 
 
-
-
-
     //On click of x button, call api for images and nutrient information
     $(document).on("click", ".mealButton", function () {
         console.log($(this).text().toLowerCase());
@@ -616,56 +613,46 @@ $(document).ready(function () {
         })
             .then(function (response) {
 
-                for (var i = 0; i < response.hits.length; i++) {
+                for (var i = 0; i < 5; i++) {
 
-                    $("#" + q + "-card-img-" + i).append(response.hits[i].recipe.image);
-                    $("#" + q + "-card-img-" + i).attr("src", response.hits[i].recipe.image);
-                    $("#" + q + "-food-card-" + i).attr({
+                    var foodDiv = $("<div class='card' style='width: 11rem;' draggable='true'>");
+                    var pDiv = $("<p id='" + q + i + "'>" + response.hits[i].recipe.label + "</p>");
+                    var imgDiv = $("<img class='mealCards' draggable='false'>");
+
+                    $(foodDiv).append(pDiv);
+                    $(foodDiv).append(imgDiv);
+                    $(imgDiv).attr("src", response.hits[i].recipe.image);
+
+                    $(foodDiv).attr({
                         "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
                         "protein": response.hits[i].recipe.digest[2].total / response.hits[i].recipe.yield,
                         "fats": response.hits[i].recipe.digest[0].total / response.hits[i].recipe.yield,
                         "carbohydrates": response.hits[i].recipe.digest[1].total / response.hits[i].recipe.yield,
                     })
-                    $("#" + q + i).prepend(response.hits[i].recipe.label);
+
+                    $("#" + q + "Menu").append(foodDiv);
                 }
 
-                console.log(response);
-            });
-    });
+                for (var i = 5; i < 10; i++) {
 
-    //On click of x button, call api for images and nutrient information
-    $(document).on("click", "#dinner-button", function () {
-        console.log($(this).text().toLowerCase());
+                    var foodDiv = $("<div class='card' style='width: 11rem;' draggable='true'>");
+                    var pDiv = $("<p id='" + q + i + "'>" + response.hits[i].recipe.label + "</p>");
+                    var imgDiv = $("<img class='mealCards' draggable='false'>");
 
-        // For breakfast, hide lunch/dinner. For lunch, hide breakfast/dinner. etc..
+                    $(foodDiv).append(pDiv);
+                    $(foodDiv).append(imgDiv);
+                    $(imgDiv).attr("src", response.hits[i].recipe.image);
 
-
-        // ajax call
-        var apiID = "9f84eb9a";
-        var apiKey = "87c7dc23bc1d85a4af08d0fed3b5eb4e";
-        var q = $(this).text().toLowerCase();
-        var queryURL = `https://api.edamam.com/search?q=${q}&app_id=${apiID}&app_key=${apiKey}`
-
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-            .then(function (response) {
-
-                for (var i = 0; i < response.hits.length; i++) {
-
-
-
-                    $("#" + q + "-card-img-" + i).append(response.hits[i].recipe.image);
-                    $("#" + q + "-card-img-" + i).attr("src", response.hits[i].recipe.image);
-                    $("#" + q + "-food-card-" + i).attr({
+                    $(foodDiv).attr({
                         "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
                         "protein": response.hits[i].recipe.digest[2].total / response.hits[i].recipe.yield,
                         "fats": response.hits[i].recipe.digest[0].total / response.hits[i].recipe.yield,
                         "carbohydrates": response.hits[i].recipe.digest[1].total / response.hits[i].recipe.yield,
                     })
-                    $("#" + q + i).prepend(response.hits[i].recipe.label);
+
+                    $("#" + q + "Menu2").append(foodDiv);
                 }
+
 
                 console.log(response);
             });
