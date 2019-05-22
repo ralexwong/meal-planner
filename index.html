@@ -36,324 +36,324 @@
 
 <body>
 
-    <div id="searchContainer" class="container">
-        <div class="jumbotron" id="jumbotron">
-            <h1 class="display-4">How to use the planner</h1>
-            <hr class="my-4">
-            <ul>
-                <li>Tap on the breakfast/lunch/dinner buttons to checkout some pre assorted meals! Click and drag one of
-                    the meals into a box.</li>
+<div id="searchContainer" class="container">
+    <div class="jumbotron" id="jumbotron">
+        <h1 class="display-4">How to use the planner</h1>
+        <hr class="my-4">
+        <ul>
+            <li>Tap on the breakfast/lunch/dinner buttons to checkout some pre assorted meals! Click and drag one of
+                the meals into a box.</li>
+            <br>
+            <li>You can also search for specific food with our search button!</li>
+            <br>
+            <li>The planner will calculate the nutritional info of your daily meal when box has a food item in it.
+            </li>
+        </ul>
+        <button type="button" class="btn btn-success btn-color"> 
+            <a href="recipe.html">Click here for recipes!</a>
+        </button>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1" id="user-name">User Name</label>
+                <input class="form-control" id="login" type="text">
+                <button class="btn btn-default" id="add-user" type="submit">Submit</button>
                 <br>
-                <li>You can also search for specific food with our search button!</li>
-                <br>
-                <li>The planner will calculate the nutritional info of your daily meal when box has a food item in it.
-                </li>
-            </ul>
-            <button type="button" class="btn btn-success btn-color"> 
-                <a href="recipe.html">Click here for recipes!</a>
-            </button>
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" id="user-name">User Name</label>
-                    <input class="form-control" id="login" type="text">
-                    <button class="btn btn-default" id="add-user" type="submit">Submit</button>
-                    <br>
-                    <label for="exampleInputEmail1" id="current-user"></label>
-                </div>  
-            </form>
+                <label for="exampleInputEmail1" id="current-user"></label>
+            </div>  
+        </form>
 
-          
+        
+    </div>
+
+</div>
+
+<div class="container" id="calendar">
+    <div class="row" id="weeklyMenuTitle">
+        <div class="column">
+            <p id="weeklyMenuText">Weekly Menu Planner!</p>
+        </div>
+
+        <form id="search-food">
+            <input style="border-color: black" type="text" id="searchAPI" placeholder="Enter your search here">
+            <input id="submitbutton" style="margin: 5px; border-color: black" type="submit">
+        </form>
+
+        <button type="button" class="btn btn-success btn-color" id="save"> Save! </button>
+        <button type="button" class="btn btn-success btn-color" id="clear"> Clear all! </button>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="column btn-group dropup">
+
+            <button type="button" class="category btn btn-info dropdown-toggle mealButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                id="breakfast-button">BREAKFAST</button>
+
+            <div class="dropdown-menu dropdown-menu-right" id="breakfast-menu">
+
+                <div id="breakfastMenu" class="row">
+
+                </div>
+
+                <div id="breakfastMenu2" class="row">
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="column btn-group dropup">
+
+            <button type="button" class="category btn btn-info dropdown-toggle mealButton btn-color"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="lunch-button">LUNCH</button>
+
+            <div class="dropdown-menu dropdown-menu-right" id="lunch-menu">
+
+                <div id="lunchMenu" class="row">
+
+                </div>
+
+                <div id="lunchMenu2" class="row">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="column btn-group dropup">
+
+            <button type="button" class="category btn btn-info dropdown-toggle mealButton btn-color"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dinner-button">DINNER</button>
+
+            <div class="dropdown-menu dropdown-menu-right" id="dinner-menu">
+
+                <div id="dinnerMenu" class="row">
+
+                </div>
+
+                <div id="dinnerMenu2" class="row">
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="column">
+            <button class="category btn btn-info btn-color" id="stats">Calculate</button>
         </div>
 
     </div>
 
-    <div class="container" id="calendar">
-        <div class="row" id="weeklyMenuTitle">
-            <div class="column">
-                <p id="weeklyMenuText">Weekly Menu Planner!</p>
-            </div>
 
-            <form id="search-food">
-                <input style="border-color: black" type="text" id="searchAPI" placeholder="Enter your search here">
-                <input id="submitbutton" style="margin: 5px; border-color: black" type="submit">
-            </form>
-
-            <button type="button" class="btn btn-success btn-color" id="save"> Save! </button>
-            <button type="button" class="btn btn-success btn-color" id="clear"> Clear all! </button>
+    <div class="row day" id="sunday">
+        <div class="col-2">
+            <p class="dayText">SUN</p>
         </div>
-
-        <br>
-
-        <div class="row">
-            <div class="col-2">
-
-            </div>
-            <div class="column btn-group dropup">
-
-                <button type="button" class="category btn btn-info dropdown-toggle mealButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                    id="breakfast-button">BREAKFAST</button>
-
-                <div class="dropdown-menu dropdown-menu-right" id="breakfast-menu">
-
-                    <div id="breakfastMenu" class="row">
-
-                    </div>
-
-                    <div id="breakfastMenu2" class="row">
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="column btn-group dropup">
-
-                <button type="button" class="category btn btn-info dropdown-toggle mealButton btn-color"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="lunch-button">LUNCH</button>
-
-                <div class="dropdown-menu dropdown-menu-right" id="lunch-menu">
-
-                    <div id="lunchMenu" class="row">
-
-                    </div>
-
-                    <div id="lunchMenu2" class="row">
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="column btn-group dropup">
-
-                <button type="button" class="category btn btn-info dropdown-toggle mealButton btn-color"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dinner-button">DINNER</button>
-
-                <div class="dropdown-menu dropdown-menu-right" id="dinner-menu">
-
-                    <div id="dinnerMenu" class="row">
-
-                    </div>
-
-                    <div id="dinnerMenu2" class="row">
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="column">
-                <button class="category btn btn-info btn-color" id="stats">Calculate</button>
-            </div>
-
+        <div class="column">
+            <div class="foodBox droptarget" id="sunday-breakfast"> </div>
         </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="sunday-lunch"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="sunday-dinner"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox">
+                <div class="statsBox" id="sunday-stats">
+                    <p2>Calories: <span></span>
+                        <br>
+                        Protein:<span></span>
+                        <br>
+                        Carbs: <span></span>
+                        <br>
+                        Fats: <span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-        <div class="row day" id="sunday">
-            <div class="col-2">
-                <p class="dayText">SUN</p>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="sunday-breakfast"> </div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="sunday-lunch"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="sunday-dinner"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox">
-                    <div class="statsBox" id="sunday-stats">
-                        <p2>Calories: <span></span>
-                            <br>
-                            Protein:<span></span>
-                            <br>
-                            Carbs: <span></span>
-                            <br>
-                            Fats: <span></span>
+    <div class="row day" id="monday">
+        <div class="col-2">
+            <p class="dayText">MON</p>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="monday-breakfast"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="monday-lunch"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="monday-dinner"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox">
+                <div class="statsBox" id="monday-stats">
+                    <p2>Calories: <span></span>
+                        <br>
+                        Protein:<span></span>
+                        <br>
+                        Carbs: <span></span>
+                        <br>
+                        Fats: <span></span>
                         </p>
-                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="row day" id="monday">
-            <div class="col-2">
-                <p class="dayText">MON</p>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="monday-breakfast"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="monday-lunch"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="monday-dinner"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox">
-                    <div class="statsBox" id="monday-stats">
-                        <p2>Calories: <span></span>
-                            <br>
-                            Protein:<span></span>
-                            <br>
-                            Carbs: <span></span>
-                            <br>
-                            Fats: <span></span>
-                            </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row day" id="tuesday">
-            <div class="col-2">
-                <p class="dayText">TUES</p>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="tuesday-breakfast"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="tuesday-lunch"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="tuesday-dinner"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox">
-                    <div class="statsBox" id="tuesday-stats">
-                        <p2>Calories: <span></span>
-                            <br>
-                            Protein:<span></span>
-                            <br>
-                            Carbs: <span></span>
-                            <br>
-                            Fats: <span></span>
-                            </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row day" id="wednesday">
-            <div class="col-2">
-                <p class="dayText">WED</p>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="wednesday-breakfast"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="wednesday-lunch"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="wednesday-dinner"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox">
-                    <div class="statsBox" id="wednesday-stats">
-                        <p2>Calories: <span></span>
-                            <br>
-                            Protein:<span></span>
-                            <br>
-                            Carbs: <span></span>
-                            <br>
-                            Fats: <span></span>
-                            </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row day" id="thursday">
-            <div class="col-2">
-                <p class="dayText">THUR</p>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="thursday-breakfast"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="thursday-lunch"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="thursday-dinner"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox">
-                    <div class="statsBox" id="thursday-stats">
-                        <p2>Calories: <span></span>
-                            <br>
-                            Protein:<span></span>
-                            <br>
-                            Carbs: <span></span>
-                            <br>
-                            Fats: <span></span>
-                            </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row day" id="friday">
-            <div class="col-2">
-                <p class="dayText">FRI</p>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="friday-breakfast"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="friday-lunch"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="friday-dinner"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox">
-                    <div class="statsBox" id="friday-stats">
-                        <p2>Calories: <span></span>
-                            <br>
-                            Protein:<span></span>
-                            <br>
-                            Carbs: <span></span>
-                            <br>
-                            Fats: <span></span>
-                            </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row day" id="saturday">
-            <div class="col-2">
-                <p class="dayText">SAT</p>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="saturday-breakfast"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="saturday-lunch"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox droptarget" id="saturday-dinner"></div>
-            </div>
-            <div class="column">
-                <div class="foodBox">
-                    <div class="statsBox" id="saturday-stats">
-                        <p2>Calories: <span></span>
-                            <br>
-                            Protein:<span></span>
-                            <br>
-                            Carbs: <span></span>
-                            <br>
-                            Fats: <span></span>
-                            </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
     </div>
+
+    <div class="row day" id="tuesday">
+        <div class="col-2">
+            <p class="dayText">TUES</p>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="tuesday-breakfast"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="tuesday-lunch"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="tuesday-dinner"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox">
+                <div class="statsBox" id="tuesday-stats">
+                    <p2>Calories: <span></span>
+                        <br>
+                        Protein:<span></span>
+                        <br>
+                        Carbs: <span></span>
+                        <br>
+                        Fats: <span></span>
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row day" id="wednesday">
+        <div class="col-2">
+            <p class="dayText">WED</p>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="wednesday-breakfast"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="wednesday-lunch"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="wednesday-dinner"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox">
+                <div class="statsBox" id="wednesday-stats">
+                    <p2>Calories: <span></span>
+                        <br>
+                        Protein:<span></span>
+                        <br>
+                        Carbs: <span></span>
+                        <br>
+                        Fats: <span></span>
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row day" id="thursday">
+        <div class="col-2">
+            <p class="dayText">THUR</p>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="thursday-breakfast"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="thursday-lunch"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="thursday-dinner"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox">
+                <div class="statsBox" id="thursday-stats">
+                    <p2>Calories: <span></span>
+                        <br>
+                        Protein:<span></span>
+                        <br>
+                        Carbs: <span></span>
+                        <br>
+                        Fats: <span></span>
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row day" id="friday">
+        <div class="col-2">
+            <p class="dayText">FRI</p>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="friday-breakfast"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="friday-lunch"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="friday-dinner"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox">
+                <div class="statsBox" id="friday-stats">
+                    <p2>Calories: <span></span>
+                        <br>
+                        Protein:<span></span>
+                        <br>
+                        Carbs: <span></span>
+                        <br>
+                        Fats: <span></span>
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row day" id="saturday">
+        <div class="col-2">
+            <p class="dayText">SAT</p>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="saturday-breakfast"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="saturday-lunch"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox droptarget" id="saturday-dinner"></div>
+        </div>
+        <div class="column">
+            <div class="foodBox">
+                <div class="statsBox" id="saturday-stats">
+                    <p2>Calories: <span></span>
+                        <br>
+                        Protein:<span></span>
+                        <br>
+                        Carbs: <span></span>
+                        <br>
+                        Fats: <span></span>
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
 
 </body>
 

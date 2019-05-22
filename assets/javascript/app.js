@@ -31,7 +31,7 @@ $(document).ready(function () {
     document.addEventListener("drop", function (event) {
         event.preventDefault();
 
-        if (event.target.className == "foodBox droptarget") {
+        if (event.target.className === "foodBox droptarget") {
 
             var data = event.dataTransfer.getData("Text");
             console.log("data stored: " + data);
@@ -114,7 +114,36 @@ $(document).ready(function () {
             for (var k = 0; k < nutrientArray.length; k++) {
 
                 // add together the nutrient from all the meals of that day and round it to a number
-                var count = Math.round((+$("#" + daysArray[i] + "-breakfast").children().attr(nutrientArray[k])) + (+$("#" + daysArray[i] + "-lunch").children().attr(nutrientArray[k])) + (+$("#" + daysArray[i] + "-dinner").children().attr(nutrientArray[k])));
+
+                var breakfast = (+$("#" + daysArray[i] + "-breakfast").children().attr(nutrientArray[k]));
+                var lunch = (+$("#" + daysArray[i] + "-lunch").children().attr(nutrientArray[k]));
+                var dinner = (+$("#" + daysArray[i] + "-dinner").children().attr(nutrientArray[k]));
+
+                // if ($("#" + daysArray[i] + "-breakfast").children().is(":empty")) {
+                //     var breakfast = 0;
+                // }
+
+                // if ($("#" + daysArray[i] + "-lunch").children().is(":empty")) {
+                //     var lunch = 0;
+                // }
+
+                // if ($("#" + daysArray[i] + "-dinner").children().is(":empty")) {
+                //     var dinner = 0;
+                // }
+
+                if (isNaN(breakfast)) {
+                    breakfast = 0;
+                }
+
+                if (isNaN(lunch)) {
+                    lunch = 0;
+                }
+
+                if (isNaN(dinner)) {
+                    dinner = 0;
+                }
+
+                var count = Math.round(breakfast + lunch + dinner);
 
                 // append numbers to html
                 $("#" + daysArray[i] + "-stats").append(nutrientArray[k] + ": " + count + "<br>");
@@ -364,6 +393,7 @@ $(document).ready(function () {
                     $(foodDiv).append(pDiv);
                     $(foodDiv).append(imgDiv);
                     $(imgDiv).attr("src", response.hits[i].recipe.image);
+                    $(foodDiv).attr("id", i);
 
                     $(foodDiv).attr({
                         "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
@@ -386,6 +416,7 @@ $(document).ready(function () {
                     $(foodDiv).append(pDiv);
                     $(foodDiv).append(imgDiv);
                     $(imgDiv).attr("src", response.hits[i].recipe.image);
+                    $(foodDiv).attr("id", i);
 
                     $(foodDiv).attr({
                         "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
@@ -431,6 +462,7 @@ $(document).ready(function () {
                     $(foodDiv).append(pDiv);
                     $(foodDiv).append(imgDiv);
                     $(imgDiv).attr("src", response.hits[i].recipe.image);
+                    $(foodDiv).attr("id", i);
 
                     $(foodDiv).attr({
                         "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
@@ -451,6 +483,8 @@ $(document).ready(function () {
                     $(foodDiv).append(pDiv);
                     $(foodDiv).append(imgDiv);
                     $(imgDiv).attr("src", response.hits[i].recipe.image);
+                    $(foodDiv).attr("id", i);
+
 
                     $(foodDiv).attr({
                         "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
