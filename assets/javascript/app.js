@@ -6,6 +6,34 @@ $(document).ready(function () {
     var nutrientArray = ["calories", "protein", "carbohydrates", "fats",];
     var shortDayArray = ["SUN", "MON", "TUES", "WED", "THUR", "FRI", "SAT"]
 
+
+
+
+    function calendar () {
+        for (var i = 0; i < daysArray.length; i++) {
+            var row = $("<div class='row day'>");
+            row.attr("id", daysArray[i]);
+            $("#calendar").append(row);
+            var col2 = $("<div class='col-2'>").append("<p class='dayText'>" + shortDayArray[i] + "</p>");
+            row.append(col2);
+
+            for (var j = 0; j < mealArray.length; j++) {
+                var col = $("<div class='column'>").append("<div class='foodBox droptarget' id='" + daysArray[i] + "-" + mealArray[j] + "'></div>");
+                row.append(col);
+            }
+            var boxCol = $("<div class='column'>");
+            var foodBox = $("<div class='foodBox'>");
+            var statsBox = $("<div class='statsBox' id='" + daysArray[i] + "-" + "stats'>");
+            var p2 = $("<p2>Calories: <span></span><br>Protein:<span></span><br>Carbs: <span></span><br>Fats: <span></span></p2>")
+            row.append(boxCol);
+            boxCol.append(foodBox);
+            foodBox.append(statsBox);
+            statsBox.append(p2);
+        }
+    }
+
+    calendar();
+
     // Hide the meal menus at the beginning
     $("#breakfast-menu").hide();
     $("#lunch-menu").hide();
@@ -118,18 +146,6 @@ $(document).ready(function () {
                 var breakfast = (+$("#" + daysArray[i] + "-breakfast").children().attr(nutrientArray[k]));
                 var lunch = (+$("#" + daysArray[i] + "-lunch").children().attr(nutrientArray[k]));
                 var dinner = (+$("#" + daysArray[i] + "-dinner").children().attr(nutrientArray[k]));
-
-                // if ($("#" + daysArray[i] + "-breakfast").children().is(":empty")) {
-                //     var breakfast = 0;
-                // }
-
-                // if ($("#" + daysArray[i] + "-lunch").children().is(":empty")) {
-                //     var lunch = 0;
-                // }
-
-                // if ($("#" + daysArray[i] + "-dinner").children().is(":empty")) {
-                //     var dinner = 0;
-                // }
 
                 if (isNaN(breakfast)) {
                     breakfast = 0;
@@ -261,7 +277,7 @@ $(document).ready(function () {
             database.ref(user).on("value", function(snapshot) {
 
                 console.log(snapshot.val());
-        
+
                 $("#sunday-breakfast").html(snapshot.val().sundayBreakfast);
                 $("#sunday-lunch").html(snapshot.val().sundayLunch);
                 $("#sunday-dinner").html(snapshot.val().sundayDinner);
@@ -360,13 +376,6 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    $("#stats").click(function (e) {
-       
-        calculate();
-
-    });
-
-
     //On click of submit next to input form, AJAX request for user input
     $(document).on("click", "#submitbutton", function () {
         var apiID = "aee51471";
@@ -393,7 +402,7 @@ $(document).ready(function () {
                     $(foodDiv).append(pDiv);
                     $(foodDiv).append(imgDiv);
                     $(imgDiv).attr("src", response.hits[i].recipe.image);
-                    $(foodDiv).attr("id", i);
+                    $(foodDiv).attr("id", response.hits[i].recipe.label);
 
                     $(foodDiv).attr({
                         "calories": response.hits[i].recipe.calories / response.hits[i].recipe.yield,
